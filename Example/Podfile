@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'KACheckList_Example' do
+  pod 'KACheckList', :path => '../'
+
+  target 'KACheckList_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
