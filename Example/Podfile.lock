@@ -1,0 +1,16 @@
+PODS:
+  - KACheckList (0.1.0)
+
+DEPENDENCIES:
+  - KACheckList (from `../`)
+
+EXTERNAL SOURCES:
+  KACheckList:
+    :path: ../
+
+SPEC CHECKSUMS:
+  KACheckList: 3380576b2ee464f0245a140cee50e65b28cd9935
+
+PODFILE CHECKSUM: b891567458605015bdeb79d87d6e02f176bffeb8
+
+COCOAPODS: 1.0.1

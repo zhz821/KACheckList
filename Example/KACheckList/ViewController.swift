@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import KACheckList
+
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var testBtn: UIButton!
+    
+    let data = ["A", "B", "C", "D", "E", "F"]
+    var currentData = "B"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        updateBtnTitle()
+    }
+    
+    func updateBtnTitle() {
+        testBtn.setTitle(currentData, forState: .Normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,5 +32,15 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func btnTapped(sender: AnyObject) {
+        let vc = KACheckList.checkList(data, selectedData: currentData) {[weak self] (selectedData) in
+            if let selectedData = selectedData {
+                self?.currentData = selectedData
+                self?.updateBtnTitle()
+            }
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 

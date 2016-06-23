@@ -1,0 +1,6 @@
+framework module KACheckList {
+  umbrella header "KACheckList-umbrella.h"
+
+  export *
+  module * { export * }
+}
