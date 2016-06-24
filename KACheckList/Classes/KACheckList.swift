@@ -18,6 +18,8 @@ public class KACheckList: UIViewController {
     
     private var didSelectedDatas: ((selectedDatas: [String]?) -> Void)?
     
+    public var autoBack = true
+    
     public class func checkList(dataSource: [String]?, selectedDatas: [String]?, done: ((selectedDatas: [String]?) -> Void)?) -> KACheckList {
         let podBundle = NSBundle(forClass: self.classForCoder())
         let bundleURL = podBundle.URLForResource("KACheckList", withExtension: "bundle")!
@@ -103,6 +105,14 @@ extension KACheckList: UITableViewDataSource, UITableViewDelegate {
             updateSelectedIndex()
             
             didSelectedDatas?(selectedDatas: selectedDatas)
+            
+            if autoBack {
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+                
+                dispatch_after(delayTime, dispatch_get_main_queue(), { 
+                    self.navigationController?.popViewControllerAnimated(true)
+                })
+            }
         }
     }
 }

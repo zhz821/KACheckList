@@ -10,7 +10,6 @@
 		0BAE99530FB78A9CBFBF81ED7FEA5A93 /* KACheckList-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F71FE0A551B6F826EF00C5D52F230D55 /* KACheckList-dummy.m */; };
 		0E04EA710C2F56F92A0796373B443345 /* KACheckList-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5E69D2C17DE5BF384F33FD4F9D242519 /* KACheckList-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DB61AAD8B9BDFB340D3B0851D6B6EED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		34F8AF76EC4A395472056780692D887B /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AFD36FEFF5BA37D5C949C0158381B3 /* ReplaceMe.swift */; };
 		370209F1F9CA4196AEE8B87B6ACF2063 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		4C50CDB27A4FCED4D391763B4F0FD37A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		774EE068B56F8BFC0B4582851FC0642F /* KACheckList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E8CDFF5CF3941C3C86FAF9C43EF0B95 /* KACheckList.storyboard */; };
@@ -73,7 +72,6 @@
 		E278C490338B593F30439299DE4D8657 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E79DD98F178544A6729D931666D762B1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F566F0C99B75867576E121594E8A2B63 /* Pods-KACheckList_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-KACheckList_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F6AFD36FEFF5BA37D5C949C0158381B3 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
 		F71FE0A551B6F826EF00C5D52F230D55 /* KACheckList-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "KACheckList-dummy.m"; sourceTree = "<group>"; };
 		F8740BC51D461E7870867C58D735B7E7 /* Pods-KACheckList_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-KACheckList_Tests.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				4A8C4D51323736FC94A3C8A3C4D40837 /* KACheckList.swift */,
-				F6AFD36FEFF5BA37D5C949C0158381B3 /* ReplaceMe.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -443,7 +440,6 @@
 			files = (
 				0BAE99530FB78A9CBFBF81ED7FEA5A93 /* KACheckList-dummy.m in Sources */,
 				EBA42AC8F7BCBA595D8A26380094ABA2 /* KACheckList.swift in Sources */,
-				34F8AF76EC4A395472056780692D887B /* ReplaceMe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
