@@ -17,23 +17,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-Gc-lU6">
-                                <rect key="frame" x="20" y="52" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-Gc-lU6">
+                                <rect key="frame" x="20" y="144" width="110" height="30"/>
+                                <state key="normal" title="Single Selection"/>
                                 <connections>
-                                    <action selector="btnTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jDU-RV-FXD"/>
+                                    <action selector="singleBtnTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9MK-tg-5rE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zD9-1V-m1g">
+                                <rect key="frame" x="20" y="195" width="110" height="30"/>
+                                <state key="normal" title="Multiple Selection"/>
+                                <connections>
+                                    <action selector="multipleBtnTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Gzq-gj-ekC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zD9-1V-m1g" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Qq8-Fx-eNJ"/>
+                            <constraint firstItem="zD9-1V-m1g" firstAttribute="top" secondItem="ZmY-Gc-lU6" secondAttribute="bottom" constant="20" id="fi7-JO-pas"/>
                             <constraint firstItem="ZmY-Gc-lU6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="hJK-Bi-xLn"/>
                             <constraint firstItem="ZmY-Gc-lU6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="80" id="vJx-fB-Y2c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mi4-VC-Ae6"/>
                     <connections>
-                        <outlet property="testBtn" destination="ZmY-Gc-lU6" id="zqJ-Zz-65N"/>
+                        <outlet property="multiBtn" destination="zD9-1V-m1g" id="Gpt-5Z-3Pa"/>
+                        <outlet property="singleBtn" destination="ZmY-Gc-lU6" id="CXw-aW-VDu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

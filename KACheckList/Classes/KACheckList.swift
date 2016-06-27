@@ -11,14 +11,13 @@ import UIKit
 public class KACheckList: UIViewController {
     
     private var dataSource = [String]()
-    private var selectedDatas = [String]()
-    private var selectedIndexes = [Int]()
+    private var selected = [Int: String]()
     
-    private var multipleSelect = false
+    private var multipleSelect = true
     
     private var didSelectedDatas: ((selectedDatas: [String]?) -> Void)?
     
-    public var autoBack = true
+    public var autoBack = false
     
     public class func checkList(dataSource: [String]?, selectedDatas: [String]?, done: ((selectedDatas: [String]?) -> Void)?) -> KACheckList {
         let podBundle = NSBundle(forClass: self.classForCoder())
@@ -28,9 +27,17 @@ public class KACheckList: UIViewController {
         let vc = storyboard.instantiateInitialViewController() as! KACheckList
         
         vc.dataSource = dataSource ?? [String]()
-        vc.selectedDatas = selectedDatas ?? [String]()
         
         vc.didSelectedDatas = done
+        
+        if let selectedDatas = selectedDatas {
+            for data in selectedDatas {
+                let index = vc.dataSource.indexOf(data)
+                if let index = index {
+                    vc.selected[index] = data
+                }
+            }
+        }
         
         return vc
     }
@@ -41,23 +48,24 @@ public class KACheckList: UIViewController {
             done?(selectedData: selectedDatas?.first)
         }
         
+        vc.autoBack = true
+        vc.multipleSelect = false
+        
         return vc
     }
     
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-
-        updateSelectedIndex()
-    }
-
-    private func updateSelectedIndex() {
-        for data in selectedDatas {
-            let index = dataSource.indexOf(data)
-            if let index = index {
-                selectedIndexes.append(index)
-            }
+    public override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let sorted = selected.sort {
+            $0.0 < $1.0
         }
+        
+        let selectedDatas = sorted.map {$0.1}
+        
+        didSelectedDatas?(selectedDatas: selectedDatas)
     }
+    
 }
 
 extension KACheckList: UITableViewDataSource, UITableViewDelegate {
@@ -73,7 +81,7 @@ extension KACheckList: UITableViewDataSource, UITableViewDelegate {
         
         cell.textLabel?.text = data
         
-        if selectedIndexes.contains(indexPath.row) {
+        if selected[indexPath.row] != nil {
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None
@@ -85,34 +93,34 @@ extension KACheckList: UITableViewDataSource, UITableViewDelegate {
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
         if multipleSelect {
-            
-        } else {
-            
-            let cell = tableView.cellForRowAtIndexPath(indexPath)
-            cell?.accessoryType = .Checkmark
-            
-            let selected = selectedIndexes.first
-            if let selected = selected {
-                let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: selected, inSection: 0))
+            if selected[indexPath.row] != nil {
                 cell?.accessoryType = .None
+                selected.removeValueForKey(indexPath.row)
+            } else {
+                cell?.accessoryType = .Checkmark
+                selected[indexPath.row] = dataSource[indexPath.row]
             }
-            
-            selectedDatas.removeAll()
-            selectedIndexes.removeAll()
-            
-            selectedDatas.append(dataSource[indexPath.row])
-            updateSelectedIndex()
-            
-            didSelectedDatas?(selectedDatas: selectedDatas)
-            
-            if autoBack {
-                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+        } else {
+            if let selectedIndex = selected.first?.0 {
+                let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: selectedIndex, inSection: 0))
+                cell?.accessoryType = .None
                 
-                dispatch_after(delayTime, dispatch_get_main_queue(), { 
-                    self.navigationController?.popViewControllerAnimated(true)
-                })
+                selected.removeAll()
             }
+            
+            cell?.accessoryType = .Checkmark
+            selected[indexPath.row] = dataSource[indexPath.row]
+        }
+        
+        if autoBack {
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+            
+            dispatch_after(delayTime, dispatch_get_main_queue(), {
+                self.navigationController?.popViewControllerAnimated(true)
+            })
         }
     }
 }
