@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sXT-Zg-F1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sXT-Zg-F1O">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,25 +15,24 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmY-Gc-lU6">
-                                <rect key="frame" x="20" y="144" width="110" height="30"/>
                                 <state key="normal" title="Single Selection"/>
                                 <connections>
-                                    <action selector="singleBtnTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9MK-tg-5rE"/>
+                                    <action selector="singleBtnTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="SLJ-ob-sxx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zD9-1V-m1g">
-                                <rect key="frame" x="20" y="195" width="110" height="30"/>
+                                <frame key="frameInset" minX="20" minY="195" width="110" height="30"/>
                                 <state key="normal" title="Multiple Selection"/>
                                 <connections>
-                                    <action selector="multipleBtnTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Gzq-gj-ekC"/>
+                                    <action selector="multipleBtnTappedWithSender:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yla-qi-ZK5"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zD9-1V-m1g" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Qq8-Fx-eNJ"/>
                             <constraint firstItem="zD9-1V-m1g" firstAttribute="top" secondItem="ZmY-Gc-lU6" secondAttribute="bottom" constant="20" id="fi7-JO-pas"/>

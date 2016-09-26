@@ -24,10 +24,10 @@ class ViewController: UIViewController {
     }
     
     func updateBtnTitle() {
-        singleBtn.setTitle(selectedData, forState: .Normal)
+        singleBtn.setTitle(selectedData, for: .normal)
         
         if let selectedDatas = selectedDatas {
-            multiBtn.setTitle(selectedDatas.joinWithSeparator(","), forState: .Normal)
+            multiBtn.setTitle(selectedDatas.joined(separator: ","), for: .normal)
         }
 
     }
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
             }
         }
         
-        showViewController(vc, sender: nil)
+        show(vc, sender: nil)
     }
     
     @IBAction func multipleBtnTapped(sender: AnyObject) {
@@ -55,7 +55,7 @@ class ViewController: UIViewController {
                 self?.updateBtnTitle()
             }
         }
-        showViewController(vc, sender: nil)
+        show(vc, sender: nil)
     }
     
 }
