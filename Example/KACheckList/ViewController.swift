@@ -24,38 +24,32 @@ class ViewController: UIViewController {
     }
     
     func updateBtnTitle() {
-        singleBtn.setTitle(selectedData, for: .normal)
+        singleBtn.setTitle(selectedData ?? "Single Selection", for: .normal)
         
         if let selectedDatas = selectedDatas {
             multiBtn.setTitle(selectedDatas.joined(separator: ","), for: .normal)
+        } else {
+            multiBtn.setTitle("Multiple Selection", for: .normal)
         }
 
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     @IBAction func singleBtnTapped(sender: AnyObject) {
-        let vc = KACheckList.checkList(data, selectedData: selectedData) {[weak self] (selectedData) in
-            if let selectedData = selectedData {
-                self?.selectedData = selectedData
-                self?.updateBtnTitle()
-            }
+        let vc = KACheckList.checkList(data, selectedData: selectedData) {[weak self] (selectedData, selectedIndex) in
+            self?.selectedData = selectedData
+            self?.updateBtnTitle()
         }
         
-        show(vc, sender: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func multipleBtnTapped(sender: AnyObject) {
-        let vc = KACheckList.checkList(data, selectedDatas: selectedDatas) { [weak self](selectedDatas) in
-            if let selectedDatas = selectedDatas {
-                self?.selectedDatas = selectedDatas
-                self?.updateBtnTitle()
-            }
+        let vc = KACheckList.checkList(data, selectedDatas: selectedDatas) { [weak self](selectedDatas, selectedIndexes) in
+            self?.selectedDatas = selectedDatas
+            self?.updateBtnTitle()
         }
-        show(vc, sender: nil)
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
