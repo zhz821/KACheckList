@@ -7,8 +7,9 @@
 #
 
 Pod::Spec.new do |s|
+  s.platform = :ios
   s.name             = 'KACheckList'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'A simple checklist.'
 
 # This description is used to generate tags and improve search results.
@@ -24,7 +25,7 @@ A simple checkList supports single & multiple selection.
   s.homepage         = 'https://github.com/zhz821/KACheckList'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'zhihuazhang' => 'zhangzhihua.dev@gmail.com' }
+  s.author           = { 'ZhihuaZhang' => 'shika.cho@kapps.co.jp' }
   s.source           = { :git => 'https://github.com/zhz821/KACheckList.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/zhz821'
 
@@ -35,6 +36,8 @@ A simple checkList supports single & multiple selection.
   s.resource_bundles = {
    'KACheckList' => ['KACheckList/Assets/*.storyboard']
   }
+
+s.swift_version = "4.1"
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
