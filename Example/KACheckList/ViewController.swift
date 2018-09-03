@@ -11,32 +11,32 @@ import KACheckList
 
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var singleBtn: UIButton!
     @IBOutlet weak var multiBtn: UIButton!
     
     let data = ["A", "B", "C", "D", "E", "F"]
-    var selectedData: String?
-    var selectedDatas: [String]?
+    var selectedValue: String?
+    var selectedValues: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     func updateBtnTitle() {
-        singleBtn.setTitle(selectedData ?? "Single Selection", for: .normal)
+        singleBtn.setTitle(selectedValue ?? "Single Selection", for: .normal)
         
-        if let selectedDatas = selectedDatas {
+        if let selectedDatas = selectedValues {
             multiBtn.setTitle(selectedDatas.joined(separator: ","), for: .normal)
         } else {
             multiBtn.setTitle("Multiple Selection", for: .normal)
         }
-
+        
     }
-
+    
     @IBAction func singleBtnTapped(sender: AnyObject) {
-        let vc = KACheckList.checkList(data, selectedData: selectedData) {[weak self] (selectedData, selectedIndex) in
-            self?.selectedData = selectedData
+        let vc = KACheckList.checkList(dataSource: data, selectedValue: selectedValue) {[weak self] (selectedValue, selectedIndex) in
+            self?.selectedValue = selectedValue
             self?.updateBtnTitle()
         }
         
@@ -44,8 +44,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func multipleBtnTapped(sender: AnyObject) {
-        let vc = KACheckList.checkList(data, selectedDatas: selectedDatas) { [weak self](selectedDatas, selectedIndexes) in
-            self?.selectedDatas = selectedDatas
+        let vc = KACheckList.checkList(dataSource: data, selectedValues: selectedValues) { [weak self](selectedValues, selectedIndexes) in
+            self?.selectedValues = selectedValues
             self?.updateBtnTitle()
         }
         
@@ -53,4 +53,5 @@ class ViewController: UIViewController {
     }
     
 }
+
 
